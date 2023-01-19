@@ -11,14 +11,14 @@ console.log("Hello World")
 //     res.send('Hello Express');
 // })
 
-
-// Serving Middleware to our Express
-app.use(express.static(__dirname + '/public'))
-
 // serving HTML files
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '/views/index.html');
 })
+
+// Serving Middleware to our Express
+const lett = app.use(express.static(__dirname + '/public'))
+
 
 
 
