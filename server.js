@@ -22,7 +22,13 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 // Serving static assets
-app.use('/static', express.static(path.join(  __dirname, '/public')));
+// app.use('/public', express.static(path.join(__dirname, '/public')));
+
+app.use(express.static(__dirname + "/public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
+});
 
 var port = process.env.PORT || 3030;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function(){
